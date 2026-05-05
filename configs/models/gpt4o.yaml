@@ -1,0 +1,12 @@
+model:
+  name: gpt-4o
+  provider: openai
+  model_id: gpt-4o
+  api_key_env: OPENAI_API_KEY
+  max_tokens: 4096
+  temperature: 0.0
+  top_p: 1.0
+  timeout: 120
+  max_retries: 3
+  cost_per_1k_input: 0.0025
+  cost_per_1k_output: 0.01

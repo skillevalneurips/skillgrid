@@ -1,0 +1,27 @@
+_base_: ../../configs/base.yaml
+
+experiment:
+  name: gsm8k_axes
+  protocol: react   # toolless ReAct: fetch_skill / verify / answer actions
+  max_episodes: 10
+  max_steps_per_episode: 12
+  num_evolution_rounds: 1
+  react:
+    visibility: labels    # LB-style catalog by default; agent fetches full templates
+    enable_verify: true
+    lb_sample_size: 2     # LB: show 2 random skills per task; 0/neg = show all
+    lb_seed: 42           # LB: per-run seed (mixed with task_id); change to resample
+  skill_creation:
+    probe_tasks: 3    # TD probe uses all 3 train tasks
+
+dataset:
+  name: gsm8k
+  train_split: train
+  test_split: test
+  max_train_samples: 3
+  max_test_samples: 20
+  split_seed: 42
+
+# Model is defined in datasets/gsm8k/models/*.py
+# Each file has a create_model() function.
+# run.py discovers and runs all of them.

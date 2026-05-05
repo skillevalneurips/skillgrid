@@ -1,0 +1,12 @@
+_base_: config.yaml
+
+experiment:
+  name: conversational_rec_redditv2_smoke
+  max_episodes: 1
+  skill_creation:
+    probe_tasks: 3
+
+dataset:
+  max_samples: 3
+  max_train_samples: 3
+  max_test_samples: 3

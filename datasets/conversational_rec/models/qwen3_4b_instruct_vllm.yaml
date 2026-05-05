@@ -1,0 +1,14 @@
+model:
+  name: qwen3-4b-instruct
+  provider: vllm
+  model_id: Qwen/Qwen3-4B-Instruct-2507
+  dtype: bfloat16
+  max_tokens: 4096
+  temperature: 0.0
+  top_p: 1.0
+  gpu_memory_utilization: 0.7
+  tensor_parallel_size: 1
+  trust_remote_code: true
+  max_model_len: 16384
+  cost_per_1k_input: 0.0
+  cost_per_1k_output: 0.0

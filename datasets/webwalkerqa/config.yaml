@@ -1,0 +1,22 @@
+_base_: ../../configs/base.yaml
+
+dataset:
+  name: webwalkerqa
+  max_test_samples: 50
+  max_train_samples: 30
+  train_fraction: 0.1
+  split_seed: 42
+  judge_model: gpt-4o-mini
+
+experiment:
+  protocol: gaia_react
+  max_episodes: 50
+  max_steps_per_episode: 20
+  num_evolution_rounds: 1
+  max_skills: 0
+  retrieval_bundle_size: 3
+  gaia_react:
+    python_timeout: 90
+    max_exec_output_chars: 12000
+    trace_dir: outputs/reasoning_traces/webwalkerqa
+    domain: webwalkerqa

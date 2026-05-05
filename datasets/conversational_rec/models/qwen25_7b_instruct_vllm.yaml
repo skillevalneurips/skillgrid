@@ -1,0 +1,14 @@
+model:
+  name: qwen2.5-7b-instruct
+  provider: vllm
+  model_id: Qwen/Qwen2.5-7B-Instruct
+  dtype: bfloat16
+  max_tokens: 4096
+  temperature: 0.0
+  top_p: 1.0
+  gpu_memory_utilization: 0.8
+  tensor_parallel_size: 1
+  trust_remote_code: true
+  max_model_len: 16384
+  cost_per_1k_input: 0.0
+  cost_per_1k_output: 0.0

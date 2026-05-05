@@ -1,0 +1,17 @@
+dataset:
+  name: math
+  domain: math_reasoning
+  split: test
+  max_samples: null
+  path: null
+  categories: [algebra, counting_prob, geometry, intermediate_algebra, number_theory, prealgebra, precalculus]
+  tools:
+    - name: calculator
+      description: "Perform arithmetic calculations"
+    - name: equation_solver
+      description: "Solve algebraic equations"
+    - name: symbolic_engine
+      description: "Symbolic math operations (simplify, factor, integrate)"
+  evaluation:
+    primary_metric: exact_match
+    secondary_metrics: [category_accuracy]

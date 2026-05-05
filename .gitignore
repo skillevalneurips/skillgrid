@@ -1,0 +1,43 @@
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+.env
+.venv/
+env/
+venv/
+
+*.log
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+results/
+outputs/
+*.pdf
+logs/
+nohup.out
+notes.txt
+.claude/
+datasets/*/outputs/
+
+# Local benchmark datasets downloaded outside git.
+datasets/conversational_rec/raw/
+datasets/conversational_rec/extracted/
+datasets/conversational_rec/data/
+datasets/conversational_rec/outputs/
+
+# Local paper checkout used for generated TeX tables.
+69734baaf1ddea8fb4f4f3f4/
+
+# Scratch / planning docs
+change.md
+plan.md
+cursor_codebase_framework_for_agent_ski.md

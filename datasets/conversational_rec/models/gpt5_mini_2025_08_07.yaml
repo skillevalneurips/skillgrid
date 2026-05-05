@@ -1,0 +1,13 @@
+model:
+  name: gpt-5-mini-2025-08-07
+  provider: openai
+  model_id: gpt-5-mini-2025-08-07
+  api_key_env: OPENAI_API_KEY
+  max_tokens: 4096
+  use_max_completion_tokens: true
+  reasoning_effort: low
+  omit_temperature: true
+  timeout: 120
+  max_retries: 3
+  cost_per_1k_input: 0.00025
+  cost_per_1k_output: 0.002

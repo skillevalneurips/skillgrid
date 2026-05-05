@@ -1,0 +1,14 @@
+dataset:
+  name: gsm8k
+  domain: math_reasoning
+  split: test
+  max_samples: null  # null = all
+  path: null  # auto-download from HuggingFace
+  tools:
+    - name: calculator
+      description: "Perform arithmetic calculations"
+    - name: equation_solver
+      description: "Solve algebraic equations"
+  evaluation:
+    primary_metric: exact_match
+    secondary_metrics: [step_accuracy]

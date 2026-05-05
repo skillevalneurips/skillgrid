@@ -1,0 +1,13 @@
+model:
+  name: local-llm
+  provider: local
+  model_id: meta-llama/Llama-3-8B-Instruct
+  base_url: http://localhost:8000/v1
+  api_key_env: null
+  max_tokens: 4096
+  temperature: 0.0
+  top_p: 1.0
+  timeout: 300
+  max_retries: 3
+  cost_per_1k_input: 0.0
+  cost_per_1k_output: 0.0

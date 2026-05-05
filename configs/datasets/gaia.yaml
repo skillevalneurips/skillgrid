@@ -1,0 +1,27 @@
+_base_: ../base.yaml
+
+dataset:
+  name: gaia
+  domain: general_reasoning
+  hf_dataset: gaia-benchmark/GAIA
+  hf_subset: "2023_all"
+  split: validation
+  max_test_samples: 50
+  max_train_samples: 30
+  train_fraction: 0.2
+  split_seed: 42
+  levels: [1, 2, 3]
+  evaluation:
+    primary_metric: success
+    secondary_metrics: [exact_match, level_accuracy, tool_usage_efficiency]
+
+experiment:
+  protocol: gaia_react
+  max_episodes: 50
+  max_steps_per_episode: 16
+  max_skills: 9
+  retrieval_bundle_size: 3
+  gaia_react:
+    python_timeout: 60
+    max_exec_output_chars: 12000
+    trace_dir: outputs/reasoning_traces/gaia

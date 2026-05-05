@@ -1,0 +1,12 @@
+model:
+  name: gemini-pro
+  provider: google
+  model_id: gemini-2.0-flash
+  api_key_env: GOOGLE_API_KEY
+  max_tokens: 4096
+  temperature: 0.0
+  top_p: 1.0
+  timeout: 120
+  max_retries: 3
+  cost_per_1k_input: 0.001
+  cost_per_1k_output: 0.002

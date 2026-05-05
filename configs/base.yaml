@@ -1,0 +1,30 @@
+# SkillEval-Bench base configuration
+# Override via experiment-specific configs or CLI flags.
+
+project:
+  name: skilleval-bench
+  version: "0.1.0"
+  seed: 42
+  output_dir: ./outputs
+  log_level: INFO
+
+experiment:
+  name: default
+  skill_origins: [SD, TD]
+  runtime_policies: [NR, RR, PV]
+  max_episodes: 100
+  max_steps_per_episode: 50
+  budget: 1000  # max API calls or tokens budget
+  max_skills: 3  # hard cap on library size; per-dataset configs can override
+  retrieval_bundle_size: 3  # for RR policy: how many skills to retrieve per task
+  # skill_writer: not set = uses same model as agent (recommended for consistency)
+
+evaluation:
+  metrics: [success_rate, avg_steps, avg_cost, recovery_rate, selection_accuracy]
+  save_traces: true
+  save_results: true
+
+logging:
+  console: true
+  file: true
+  wandb: false

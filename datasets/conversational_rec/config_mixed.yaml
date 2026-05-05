@@ -1,0 +1,12 @@
+_base_: config.yaml
+
+experiment:
+  name: conversational_rec_redditv2_redial
+
+dataset:
+  sources: [redditv2, redial]
+  redial:
+    path: datasets/conversational_rec/data/redial
+    train_file: redial_train.csv
+    test_file: redial_test.csv
+    auto_download: false

@@ -1,0 +1,36 @@
+dataset:
+  name: alfworld
+  domain: execution_env
+  split: test
+  max_samples: null
+  path: null
+  task_types: [pick_and_place, pick_clean_then_place, pick_heat_then_place, pick_cool_then_place, look_at_obj_in_light, pick_two_obj_and_place]
+  modality: text  # text or embodied
+  tools:
+    - name: goto
+      description: "Navigate to a location in the environment"
+    - name: take
+      description: "Pick up an object"
+    - name: put
+      description: "Place an object at a location"
+    - name: open
+      description: "Open a receptacle"
+    - name: close
+      description: "Close a receptacle"
+    - name: toggle
+      description: "Toggle a device (on/off)"
+    - name: heat
+      description: "Heat an object using microwave"
+    - name: cool
+      description: "Cool an object using fridge"
+    - name: clean
+      description: "Clean an object using sink"
+    - name: examine
+      description: "Examine an object closely"
+    - name: inventory
+      description: "Check current inventory"
+    - name: look
+      description: "Look around the current location"
+  evaluation:
+    primary_metric: success_rate
+    secondary_metrics: [avg_steps, task_type_accuracy]

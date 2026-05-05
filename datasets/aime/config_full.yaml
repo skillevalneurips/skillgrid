@@ -1,0 +1,25 @@
+_base_: ../../configs/base.yaml
+
+experiment:
+  name: aime_axes_full
+  protocol: react
+  max_episodes: 30          # Full AIME25 test set (30 problems)
+  max_steps_per_episode: 12
+  num_evolution_rounds: 1   # 1 round of batch update
+  max_skills: 5
+  retrieval_bundle_size: 3  # RR: retrieve top 3 skills
+  react:
+    visibility: labels
+    enable_verify: true
+    lb_sample_size: 2       # LB: show 2 random skills per task
+    lb_seed: 42
+  skill_creation:
+    probe_tasks: 5
+
+dataset:
+  name: aime
+  train_hf: math-ai/aime24
+  test_hf: math-ai/aime25
+  max_train_samples: 10
+  max_test_samples: 30      # All 30 test problems
+  split_seed: 42

@@ -1,0 +1,57 @@
+{
+  "num_skills": 7,
+  "skills": [
+    "algebraic_manipulation",
+    "casework_enumeration",
+    "combinatorial_counting",
+    "coordinate_geometry",
+    "modular_arithmetic",
+    "number_theory_fundamentals",
+    "sequence_series_patterns"
+  ],
+  "format": "markdown",
+  "metadata": {
+    "algebraic_manipulation": {
+      "origin": "TD",
+      "level": 2,
+      "usage": 0,
+      "tool_calls": []
+    },
+    "casework_enumeration": {
+      "origin": "TD",
+      "level": 2,
+      "usage": 0,
+      "tool_calls": []
+    },
+    "combinatorial_counting": {
+      "origin": "TD",
+      "level": 2,
+      "usage": 0,
+      "tool_calls": []
+    },
+    "coordinate_geometry": {
+      "origin": "TD",
+      "level": 2,
+      "usage": 0,
+      "tool_calls": []
+    },
+    "modular_arithmetic": {
+      "origin": "TD",
+      "level": 2,
+      "usage": 0,
+      "tool_calls": []
+    },
+    "number_theory_fundamentals": {
+      "origin": "TD",
+      "level": 2,
+      "usage": 0,
+      "tool_calls": []
+    },
+    "sequence_series_patterns": {
+      "origin": "TD",
+      "level": 2,
+      "usage": 0,
+      "tool_calls": []
+    }
+  }
+}

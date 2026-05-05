@@ -1,0 +1,26 @@
+dataset:
+  name: conversational_rec
+  domain: conversational_rec
+  sources: [redditv2]
+  train_split: train
+  test_split: test
+  max_samples: null
+  path: data/reddit_v2_unzipped
+  redditv2:
+    size: small
+    variant: clean_with_titles
+  tools:
+    - name: item_search
+      description: "Search for items matching criteria"
+    - name: user_preference_query
+      description: "Query user preference history"
+    - name: recommendation_engine
+      description: "Generate recommendations based on context"
+    - name: explanation_generator
+      description: "Generate explanation for a recommendation"
+    - name: feedback_collector
+      description: "Collect and process user feedback"
+  evaluation:
+    primary_metric: hit_at_k
+    k: 10
+    secondary_metrics: [recall_at_k, ndcg_at_k]

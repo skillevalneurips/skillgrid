@@ -1,0 +1,10 @@
+# Tested compatibility constraints for HF stack in SkillEval-Bench.
+# Usage:
+#   python3 -m pip install -r constraints-transformers-trl.txt
+
+transformers>=4.46,<5
+trl>=0.10,<1
+accelerate>=0.34
+peft>=0.12
+datasets>=2.14
+packaging>=24.0

@@ -1,0 +1,17 @@
+dataset:
+  name: appworld
+  domain: execution_env
+  split: test_normal  # test_normal or test_challenge
+  max_samples: null
+  path: null
+  apps: [email, calendar, contacts, notes, todo, file_manager, messaging, social, finance]
+  tools:
+    - name: api_call
+      description: "Make an API call to an AppWorld application"
+    - name: code_execute
+      description: "Execute generated Python code against the environment"
+    - name: db_query
+      description: "Query the application database"
+  evaluation:
+    primary_metric: success_rate
+    secondary_metrics: [avg_api_calls, avg_code_lines, side_effect_rate]

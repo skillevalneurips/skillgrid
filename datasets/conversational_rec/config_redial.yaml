@@ -1,0 +1,57 @@
+_base_: ../../configs/base.yaml
+
+experiment:
+  name: conversational_rec_redial
+  protocol: in_context
+  max_episodes: 500
+  max_steps_per_episode: 8
+  num_evolution_rounds: 1
+  max_skills: 3
+  lb_sample_size: 2
+  lb_selection: random
+  retrieval_bundle_size: 1
+  retrieval:
+    description_only: true
+  react:
+    visibility: labels
+    enable_verify: false
+    lb_seed: 42
+  evolution:
+    update_source: eval
+    update_trace_filter: all
+    max_new_skills: 0
+    allow_bootstrap: false
+  skill_creation:
+    probe_tasks: 20
+
+dataset:
+  name: conversational_rec
+  domain: conversational_rec
+  sources: [redial]
+  train_split: train
+  test_split: test
+  max_samples: 500
+  max_train_samples: 0
+  max_test_samples: 500
+  split_seed: 42
+  redial:
+    path: datasets/conversational_rec/data/redial
+    train_file: redial_train.csv
+    test_file: redial_test.csv
+    auto_download: false
+  tools:
+    - name: item_search
+      description: "Search for movies matching criteria"
+    - name: user_preference_query
+      description: "Summarize user movie preferences from conversation history"
+    - name: recommendation_engine
+      description: "Rank candidate movie recommendations based on context"
+    - name: explanation_generator
+      description: "Generate explanation for a recommendation"
+    - name: feedback_collector
+      description: "Collect and process user feedback"
+  evaluation:
+    primary_metric: hit_at_k
+    k: 10
+    ks: [1, 2, 3, 5, 10, 20]
+    secondary_metrics: [recall_at_k, ndcg_at_k]

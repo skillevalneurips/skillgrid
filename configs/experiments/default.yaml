@@ -1,0 +1,41 @@
+_base_: ../base.yaml
+
+experiment:
+  name: default_benchmark
+  description: "Full benchmark across all taxonomy dimensions"
+
+  datasets: [gsm8k, math, gaia, alfworld, appworld, webwalkerqa, conversational_rec]
+  models: [gpt-4o, claude-sonnet]
+
+  skill_origins: [SD, TD]
+  runtime_policies: [OB, RR, PV]
+
+  max_episodes: 100
+  max_steps_per_episode: 50
+  budget: 1000
+  max_skills: 3
+
+  skill_creation:
+    probe_fraction: 0.1   # fraction of tasks used for TD trace probe
+
+  # Paper Table 2 taxonomy axes (3 x 3 x 2 = 18 cells)
+  taxonomy:
+    visibility: [NL, LB, FL]
+    retrieval: [NR, RR, PR]
+    evolution: [FR, BU]
+
+  # Batch-update evolution settings
+  evolution:
+    batch_update:
+      num_rounds: 3
+
+  ablations:
+    - name: no_skills_baseline
+      skill_origins: []
+      runtime_policies: [OB]
+    - name: skill_origin_ablation
+      skill_origins: [SD, TD]
+      runtime_policies: [OB]
+    - name: runtime_policy_ablation
+      skill_origins: [SD]
+      runtime_policies: [OB, RR, PV]

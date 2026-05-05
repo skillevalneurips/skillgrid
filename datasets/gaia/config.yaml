@@ -1,0 +1,29 @@
+_base_: ../../configs/base.yaml
+
+experiment:
+  name: gaia_axes_full
+  protocol: gaia_react
+  max_episodes: 50
+  max_steps_per_episode: 16
+  num_evolution_rounds: 1
+  max_skills: 9
+  retrieval_bundle_size: 3
+  react:
+    visibility: labels
+    enable_verify: true
+    lb_sample_size: 3
+    lb_seed: 42
+  gaia_react:
+    python_timeout: 60
+    max_exec_output_chars: 12000
+    trace_dir: outputs/reasoning_traces/gaia
+  skill_creation:
+    probe_tasks: 5
+
+dataset:
+  name: gaia
+  levels: [1, 2, 3]
+  max_train_samples: 30
+  max_test_samples: 50
+  train_fraction: 0.2
+  split_seed: 42

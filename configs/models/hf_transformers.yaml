@@ -1,0 +1,11 @@
+model:
+  name: hf-transformers
+  provider: hf_transformers
+  model_id: meta-llama/Llama-3-8B-Instruct
+  max_tokens: 1024
+  temperature: 0.0
+  top_p: 1.0
+  timeout: 300
+  max_retries: 1
+  cost_per_1k_input: 0.0
+  cost_per_1k_output: 0.0
