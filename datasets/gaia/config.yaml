@@ -11,7 +11,7 @@ experiment:
   react:
     visibility: labels
     enable_verify: true
-    lb_sample_size: 3
+    lb_sample_size: 2
     lb_seed: 42
   gaia_react:
     python_timeout: 60
@@ -23,7 +23,5 @@ experiment:
 dataset:
   name: gaia
   levels: [1, 2, 3]
-  max_train_samples: 30
   max_test_samples: 50
-  train_fraction: 0.2
   split_seed: 42

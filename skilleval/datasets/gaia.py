@@ -33,17 +33,16 @@ class GAIADataset(BaseDataset):
     def load(self) -> None:
         """Load GAIA from HuggingFace.
 
-        Uses validation split as test (public labels available) and
-        optionally a portion of it as train for TD probes / BU updates.
+        Uses the validation split (public labels available) and exposes the
+        same task pool as both train and test (no held-out split). TD probes
+        and BU updates therefore draw from the same pool that is evaluated.
         """
         levels = self.config.get("dataset.levels", [1, 2, 3])
         max_test = self.config.get(
             "dataset.max_test_samples",
             self.config.get("dataset.max_samples"),
         )
-        max_train = self.config.get("dataset.max_train_samples")
         split_seed = int(self.config.get("dataset.split_seed", 42))
-        train_fraction = float(self.config.get("dataset.train_fraction", 0.2))
 
         try:
             from datasets import load_dataset
@@ -88,26 +87,21 @@ class GAIADataset(BaseDataset):
                 )
             )
 
-        # Split into train/test using seeded shuffle
+        # Single pool used for both train and test (no held-out split).
         import random
         rng = random.Random(split_seed)
         shuffled = list(all_tasks)
         rng.shuffle(shuffled)
 
-        n_train = int(len(shuffled) * train_fraction)
-        if max_train is not None:
-            n_train = min(n_train, int(max_train))
-
-        self._train_tasks = shuffled[:n_train]
-        self._test_tasks = shuffled[n_train:]
-
         if max_test is not None:
-            self._test_tasks = self._test_tasks[:int(max_test)]
+            shuffled = shuffled[:int(max_test)]
 
+        self._test_tasks = shuffled
+        self._train_tasks = list(self._test_tasks)
         self._tasks = list(self._test_tasks)
         logger.info(
-            "Loaded GAIA: %d train, %d test (from %d total)",
-            len(self._train_tasks), len(self._test_tasks), len(all_tasks),
+            "Loaded GAIA: %d tasks (used as both train and test, from %d total)",
+            len(self._test_tasks), len(all_tasks),
         )
 
     def evaluate_prediction(
