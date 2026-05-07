@@ -162,6 +162,35 @@ For GAIA and WebWalkerQA, the recipe auto-loads its library from the paths
 above, so `--library-path` is only needed if you want to substitute a
 different one.
 
+## Generating new skills with Claude Code
+
+The skill cards in the libraries above were authored by Claude Code (Claude
+Opus 4.6) using the `skill-creator.md` template in the repo root. To
+regenerate or extend a library, open Claude Code in this repo and use the
+prompt template below. Angle-bracket fields are filled per benchmark.
+
+```
+Refer @traces_file and identify failure points and critical errors made
+by the model on direct inference. Develop skills using the template
+shared in @skill_creator.md to address core concepts of <benchmark_name>
+such as <concept1>, <concept2>, etc. Focus only on SKILL.md creation,
+ignore scripts and references folder mentioned in the template. Skills
+generated should be general for the benchmark and not specific to a
+particular question. You have access to the following APIs: <api1>,
+<api2>.
+```
+
+`@traces_file` is the JSONL trace pool collected by the runner (default
+location `outputs/reasoning_traces/<dataset>/`). For GAIA the
+`<api1>, <api2>` field lists the file-parsing and search APIs available to
+the agent (CSV, DOCX, Excel, JSON, PDB, PDF, Search, TXT, XML); for math
+benchmarks the field is left empty; for conversational recommendation it
+lists the retrieval and ranking interfaces.
+
+The output is one or more `SKILL.md` files. Place them under
+`<library-name>/skills/<skill-name>/SKILL.md` and pass
+`--library-path <library-name>` to the runner.
+
 ## Running experiments
 
 Each dataset has its own runner under `datasets/<name>/run.py` that sweeps
